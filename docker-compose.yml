@@ -1,8 +1,7 @@
 version: "3"
 services:
   agent-forward:
-    build: ./
-    image: agent-forward:latest
+    image: 469288592/jenkins-agent-forward:latest
     container_name: agent-forward
     restart: always
     privileged: true
