@@ -9,7 +9,6 @@ ENV LANG=zh_CN.UTF-8 \
     TIME_ZONE=Asia/Shanghai
 
 RUN localedef -v -c -i en_US -f UTF-8 zh_CN.UTF-8 >/dev/null 2>&1 &&\
-    ln -nfs  /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
     grep -q 'zh_CN.utf8' /etc/locale.conf || sed -i -E 's/^LANG=.*/LANG="zh_CN.UTF-8"/' /etc/locale.conf &&\
     yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm &&\
     yum install -y ntp yum-plugin-fastestmirror vim-enhanced ntp wget bash-completion elinks lrzsz unix2dos dos2unix git unzip net-tools cronie &&\
@@ -21,10 +20,11 @@ RUN localedef -v -c -i en_US -f UTF-8 zh_CN.UTF-8 >/dev/null 2>&1 &&\
     yum install -y maven && \
     /bin/cp -rf /tmp/resource/settings.xml /etc/maven/ && \
     chmod +x /usr/bin/agent.jar && chmod +x /usr/local/bin/jenkins.sh && \
-    mkdir -p /data/jenkins/rpmbuld/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS} && \
+    mkdir -p /data/jenkins_home && \
+    ln -nfs  /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
     yum clean all && rm -fr /tmp/Resources
 
 
-WORKDIR /data/jenkins
+WORKDIR /data/jenkins_home
 
 ENTRYPOINT ["/usr/local/bin/jenkins.sh"]

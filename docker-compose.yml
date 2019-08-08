@@ -5,8 +5,6 @@ services:
     container_name: agent-forward
     restart: always
     privileged: true
-    volumes:
-      - ./jenkins/rpmbuild/SPECS:/data/jenkins/rpmbuild/SPECS
     environment:
       - JENKINS_URL=http://172.18.0.1:8080/computer/xc-forward/slave-agent.jnlp
       - JENKINS_SECRET=fec15f31a39f8a2f98d7a85daf11c41469d819d91fba7f19873feb0eca3f1c87
