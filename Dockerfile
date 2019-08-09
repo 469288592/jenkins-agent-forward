@@ -23,7 +23,7 @@ RUN localedef -v -c -i en_US -f UTF-8 zh_CN.UTF-8 >/dev/null 2>&1 &&\
     chmod +x /usr/bin/agent.jar && chmod +x /usr/local/bin/jenkins.sh && \
     mkdir -p /data/jenkins_home && \
     ln -nfs  /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&\
-    yum clean all && rm -fr /tmp/Resources
+    yum clean all && rm -fr /tmp/resource
 
 
 WORKDIR /data/jenkins_home
