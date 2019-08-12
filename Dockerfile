@@ -15,6 +15,7 @@ RUN localedef -v -c -i en_US -f UTF-8 zh_CN.UTF-8 >/dev/null 2>&1 &&\
     yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel sudo &&\
     yum install -y rpm-build.x86_64 lua-devel libuv-devel sqlite-devel &&\
     yum install -y rpmdevtools mock &&\
+    rpmdev-setuptree &&\
     dos2unix /tmp/resource/*sh && \
     cp -r /tmp/resource/agent.jar /usr/bin/agent.jar && \
     cp -r /tmp/resource/jenkins.sh /usr/local/bin/jenkins.sh && \
